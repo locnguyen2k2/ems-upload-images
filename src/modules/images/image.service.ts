@@ -28,16 +28,16 @@ export class ImageService {
 
   async uploadImage(picture: any): Promise<string> {
     const file = await this.handleImage(picture);
-    // const bucket = this.firebaseAdmin.storage().bucket(env('FIREBASE_BUCKET'));
+    const bucket = this.firebaseAdmin.storage().bucket(env('FIREBASE_BUCKET'));
     const filename = `${uuidv4()}-${file.originalname}`;
-    // const fileUpload = bucket.file(`uploads/imgs/${filename}`);
+    const fileUpload = bucket.file(`uploads/imgs/${filename}`);
 
-    // await fileUpload.save(file.buffer, {
-    //   metadata: {
-    //     contentType: file.mimetype,
-    //   },
-    //   public: true,
-    // });
+    await fileUpload.save(file.buffer, {
+      metadata: {
+        contentType: file.mimetype,
+      },
+      public: true,
+    });
 
     return `${filename}`;
   }
