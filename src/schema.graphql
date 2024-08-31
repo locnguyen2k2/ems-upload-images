@@ -4,7 +4,7 @@
 
 type Query {
   uploadImage(file: Upload!): String!
-  deleteImage(file: Boolean!): Boolean!
+  deleteImage(file: String!): Boolean!
 }
 
 """The `Upload` scalar type represents a file upload."""

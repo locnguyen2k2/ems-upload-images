@@ -45,7 +45,7 @@ export class ImageService {
   async deleteImage(picture: any): Promise<boolean> {
     const bucket = this.firebaseAdmin.storage().bucket(env('FIREBASE_BUCKET'));
 
-    bucket.deleteFiles({
+    await bucket.deleteFiles({
       prefix: `uploads/imgs/${picture}`,
     });
 

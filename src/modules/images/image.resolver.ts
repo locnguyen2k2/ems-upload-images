@@ -24,7 +24,7 @@ export class ImageResolver {
 
   @Query(() => Boolean)
   async deleteImage(
-    @Args({ name: 'file', type: () => Boolean })
+    @Args({ name: 'file', type: () => String })
     file: string,
   ): Promise<boolean> {
     return await this.imageService.deleteImage(file);
