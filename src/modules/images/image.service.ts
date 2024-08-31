@@ -41,4 +41,14 @@ export class ImageService {
 
     return `${filename}`;
   }
+
+  async deleteImage(picture: any): Promise<boolean> {
+    const bucket = this.firebaseAdmin.storage().bucket(env('FIREBASE_BUCKET'));
+
+    bucket.deleteFiles({
+      prefix: `uploads/imgs/${picture}`,
+    });
+
+    return true;
+  }
 }

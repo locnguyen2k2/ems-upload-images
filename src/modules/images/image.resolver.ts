@@ -21,4 +21,12 @@ export class ImageResolver {
   ): Promise<string> {
     return await this.imageService.uploadImage(file);
   }
+
+  @Query(() => Boolean)
+  async deleteImage(
+    @Args({ name: 'file', type: () => Boolean })
+    file: string,
+  ): Promise<boolean> {
+    return await this.imageService.deleteImage(file);
+  }
 }
